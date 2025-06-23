@@ -1,0 +1,46 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# dotenv env files
+.env
+.env.local
+.env.*.local
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos temporários
+*.swp
+*.swo
+*.bak
+
+# Diretórios de build/output (se usar no futuro)
+dist/
+build/
+
+# Cache
+.cache/
+tmp/
+temp/
+
+# IDEs
+.vscode/
+.idea/
+*.code-workspace
+
+# Arquivos de execução local
+*.pid
+
+# Arquivos de cobertura de testes
+coverage/
+
+# Arquivos de deploy (se usar)
+*.tgz
