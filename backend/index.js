@@ -1,7 +1,9 @@
 import axios from 'axios';
 import express from 'express';
+import cors from 'cors';
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 function calcularFrete(gramas) {
   let adicional = Math.max(gramas - 100, 0);
@@ -46,8 +48,9 @@ app.post('/calcular', async (req, res) => {
   const frete = calcularFrete(peso);
 
   const precoDeclaradoReal = await converterDolarParaReal(Declarado);
+  const ParaReal = ValorConvertido * 0.84
   const imposto = await calcularImposto(Declarado, frete);
-  const total = precoDeclaradoReal + frete + imposto;
+  const total = ParaReal + frete + imposto;
 
   let resultadoLucro = null;
 
@@ -57,7 +60,7 @@ app.post('/calcular', async (req, res) => {
 
   res.json({
     custo_frete: frete.toFixed(2),
-    preco_real: precoDeclaradoReal.toFixed(2),
+    preco_real: ParaReal.toFixed(2),
     imposto_importacao: imposto.toFixed(2),
     total: total.toFixed(2),
     ...(resultadoLucro && {
